@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    {% if details %}
+        <ul>
+        {% for i in details %}
+            <li>
+                <img src="{{ i.image.url }}" alt="{{ i.name }}" style="max-width: 200px; height: auto">
+                <a href="{% url 'items' i.id %}">{{ i.name }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <h2>No products</h2>
+    {% endif %}
+    
+    <h2>Create Product</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    {{products}}
+ <a href="{% url 'Getdata'%}">Api function</a>
+</body>
+</html>
